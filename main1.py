@@ -1,6 +1,7 @@
 from num2words import num2words
 import nltk
 nltk.download('brown')
+nltk.download('names')
 from nltk.util import ngrams
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
