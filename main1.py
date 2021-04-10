@@ -8,8 +8,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import re, joblib
-from normalise import normalise
-from sklearn.feature_extraction.text import TfidfVectorizer
+import TfidfVectorizer
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
@@ -77,12 +76,6 @@ def PreProcessing(text):
     
     # Lemmetization
     text = " ".join([lemmatizer.lemmatize(word) for word in text.split()])
-
-    # Normalize the text.
-    try:
-        text = " ".join(normalise(text, variety="BrE", user_abbrevs={}, verbose=False))
-    except:
-        pass
     
     text = removeLen1words_num2words(text)
     
