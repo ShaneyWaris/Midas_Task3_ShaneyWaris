@@ -5,7 +5,7 @@ import nltk
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
-
+import tensorflow_hub as hub
 from nltk.util import ngrams
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -16,7 +16,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
-clf = joblib.load('./model/TfidfVectorizer__MLPClassifier.pkl')
+clf = joblib.load('./model/LinearSVC.pkl')
 vocab = joblib.load('./vocab.pkl')
 d = {
     0: 'Clothing',
@@ -46,6 +46,7 @@ d = {
     24: 'Eyewear',
     25: 'eBooks'
 }
+embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder-large/5")
 
 def removeLen1words_num2words(text):
     new_text = []
@@ -94,7 +95,8 @@ def PreProcessing(text):
 
 def return_category(text):
     text = PreProcessing(text)
-    vec = TfidfVectorizer(vocabulary=vocab).fit_transform([text]).toarray()
-    category = clf.predict(vec)
+    all_embed = embed(text)
+    # vec = TfidfVectorizer(vocabulary=vocab).fit_transform([text]).toarray()
+    category = clf.predict(all_embed)
     return d.get(category[0])
 
