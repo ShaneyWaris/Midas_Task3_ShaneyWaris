@@ -1,15 +1,20 @@
 from num2words import num2words
-import nltk
-nltk.download('brown')
-nltk.download('names')
-nltk.download('stopwords')
-from nltk.util import ngrams
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
 import re, joblib
-stop_words = set(stopwords.words('english'))
-lemmatizer = WordNetLemmatizer()
+stop_words = [
+    'to', 'you', 'this', 'itself', 'as', 'there', 'very', 'does', 'couldn', 'of', "you'll", 
+    'himself', 'didn', "hasn't", 'here', 'then', "mightn't", 'just', 'after', 'wouldn', 'having', 
+    'the', 'doesn', 'did', 'these', "you're", 'your', "it's", 'if', 'all', 'm', 'such', 'will', 'above', 
+    'before', 'do', 'where', "shan't", 'won', 'at', 'or', 'was', 'than', 'it', 'hadn', 'his', "won't", 'o', 
+    'mustn', 'ma', 's', "haven't", 'own', 'be', 'other', 'she', 'only', 'mightn', "she's", 'off', 'theirs', 
+    "wouldn't", 'more', 'ourselves', 'each', 'yourselves', 'about', "weren't", 'whom', 'needn', 't', 'up', 'from', 
+    'its', 'with', 'nor', 'i', 'are', 'aren', 'y', 'once', 'in', "don't", 'being', 'some', 'when', 've', 'doing', 
+    'haven', 'yourself', 'had', 'd', 'ain', 'our', 'wasn', 'herself', "doesn't", 'by', 'they', 'most', 'hers', 
+    'those', 'hasn', 'that', 'we', 'how', "that'll", 'has', 'and', 'few', 'ours', 'him', 'again', 'same', 'further', 
+    "couldn't", "wasn't", 'into', 'should', 'what', "hadn't", 'shan', 'any', 'why', 'their', 'yours', 'have', 'while', 
+    'both', 'under', 'until', 'themselves', 'so', 'which', 'between', 'me', 're', "you've", 'shouldn', 'he', 'them', 'an',
+     "isn't", 'over', 'not', 'for', 'but', 'can', "shouldn't", "needn't", 'on', 'below', 'my', "aren't", 'a', 'because', 'against', 
+     "mustn't", 'myself', 'were', 'is', 'weren', 'now', 'no', 'll', 'isn', 'out', 'am', 'during', "didn't", 'through', 'don', "should've", 
+     "you'd", 'her', 'down', 'who', 'too', 'been']
 
 clf = joblib.load('./model/LinearSVC.pkl')
 vocab = joblib.load('./vocab.pkl')
@@ -65,7 +70,7 @@ def PreProcessing(text):
     text = removeLen1words_num2words(text)
 
     # Remove Stopwords.
-    word_tokens = word_tokenize(text)
+    word_tokens = text.split()
     text = " ".join([w for w in word_tokens if not w in stop_words])
     
     # Remove urls.
@@ -73,9 +78,6 @@ def PreProcessing(text):
 
     # Remove Punctuations.
     text = re.sub(r'[+*|/\\\-?.>,<\"\';:!@#$%^&()_`~]', ' ', str(text))
-    
-    # Lemmetization
-    text = " ".join([lemmatizer.lemmatize(word) for word in text.split()])
     
     text = removeLen1words_num2words(text)
     
