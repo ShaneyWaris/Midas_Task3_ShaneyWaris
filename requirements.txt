@@ -5,5 +5,5 @@ regex==2021.4.4
 normalise==0.1.8
 joblib==0.17.0
 Jinja2==2.11.2
-tensorflow==2.4.1
+tensorflow
 tensorflow-hub==0.10.0
