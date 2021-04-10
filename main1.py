@@ -3,9 +3,6 @@ import nltk
 # nltk.download('brown')
 # nltk.download('names')
 nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
-import tensorflow_hub as hub
 from nltk.util import ngrams
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -95,8 +92,7 @@ def PreProcessing(text):
 
 def return_category(text):
     text = PreProcessing(text)
-    all_embed = embed(text)
-    # vec = TfidfVectorizer(vocabulary=vocab).fit_transform([text]).toarray()
-    category = clf.predict(all_embed)
+    vec = TfidfVectorizer(vocabulary=vocab).fit_transform([text]).toarray()
+    category = clf.predict(vec)
     return d.get(category[0])
 
