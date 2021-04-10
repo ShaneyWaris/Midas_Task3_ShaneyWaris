@@ -16,6 +16,7 @@ stop_words = [
      "mustn't", 'myself', 'were', 'is', 'weren', 'now', 'no', 'll', 'isn', 'out', 'am', 'during', "didn't", 'through', 'don', "should've", 
      "you'd", 'her', 'down', 'who', 'too', 'been']
 
+
 clf = joblib.load('./model/TfidfVectorizer__MLPClassifier.pkl')
 vocab = joblib.load('./vocab.pkl')
 test = joblib.load('./new_tf.pkl')
