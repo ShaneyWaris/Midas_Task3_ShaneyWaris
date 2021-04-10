@@ -18,8 +18,8 @@ stop_words = [
 
 
 clf = joblib.load('./model/TfidfVectorizer__MLPClassifier.pkl')
-vocab = joblib.load('./vocab.pkl')
-test = joblib.load('./new_tf.pkl')
+vocab = joblib.load('./pkl files/vocab.pkl')
+test = joblib.load('./pkl files/new_tf.pkl')
 d = {
     0: 'Clothing',
     1: 'Furniture',

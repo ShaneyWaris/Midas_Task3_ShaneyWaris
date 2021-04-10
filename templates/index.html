@@ -18,8 +18,8 @@
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center" style="color: white;">
             <a class="mr-5 hover:text-gray-900" href="/">Home</a>
             <!-- <a class="mr-5 hover:text-gray-900" href="/members">Members</a> -->
-              <!-- <a class="mr-5 hover:text-gray-900" href="/readme">ReadMe</a> -->
-            <!-- <a class="mr-5 hover:text-gray-900" href="/about">About</a> -->
+              <a class="mr-5 hover:text-gray-900" href="/readme">ReadMe</a>
+            <a class="mr-5 hover:text-gray-900" href="/about">About</a>
           </nav>
         </div>
       </header>
@@ -33,7 +33,7 @@
             <div class="flex flex-wrap -m-2">
               <div class="p-2 w-full">
                 <div class="relative">
-                  <label for="name" class="leading-7 text-sm text-gray-600"><b>Enter the product description here:</b></label>
+                  <label for="name" class="leading-7 text-sm text-gray-600"><b>Enter the Product Description here:</b></label><br>
                   <textarea rows=5 type="text" id="headline" name="headline" class="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                 </div>
               </div>
@@ -49,10 +49,9 @@
             </div>
             {% if b %}
             <div class='container px-10 py-240 mx-auto' style='margin-top: 80px'>
-              <p class="lg:w-2/3 mx-auto leading-relaxed text-base">My model is <b>97%</b> sure that it belongs to "<b>{{ l }}</b>" Category :-)</p>
-              
+              <p class="lg:w-2/3 mx-auto leading-relaxed text-base">My model is <b>97%</b> sure that it belongs to "<b>{{ l }}</b>" Category.</p>
+              <p style="margin-top: 15px;"><b>Note:</b> The best performance is given by MLP Classifier with TF-IDF Vectorization Technique.</p>
             </div>
-
             {% endif %}
             
           </div>
