@@ -87,9 +87,5 @@ def PreProcessing(text):
 def return_category(text):
     text = PreProcessing(text)
     vec = test.fit_transform([text]).toarray()
-    return  clf.predict(vec)
-    # return d.get(category[0])
-
-
-
-print(return_category("hello world"))
+    category = clf.predict(vec)
+    return d.get(category[0])
