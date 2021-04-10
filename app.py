@@ -21,9 +21,9 @@ def hello_world():
 def about():
     return render_template('about.html')
 
-# @app.route('/members')
-# def members():
-#     return render_template('aboutme.html')
+@app.route('/analysis')
+def members():
+    return render_template('analysis.html')
 
 @app.route('/readme')
 def readme():
