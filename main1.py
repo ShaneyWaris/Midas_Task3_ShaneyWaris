@@ -1,7 +1,7 @@
 from num2words import num2words
 import nltk
-nltk.download('brown')
-nltk.download('names')
+# nltk.download('brown')
+# nltk.download('names')
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
