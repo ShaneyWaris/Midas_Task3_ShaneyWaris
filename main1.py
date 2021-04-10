@@ -43,7 +43,6 @@ d = {
     24: 'Eyewear',
     25: 'eBooks'
 }
-embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder-large/5")
 
 def removeLen1words_num2words(text):
     new_text = []
